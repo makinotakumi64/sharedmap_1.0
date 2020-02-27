@@ -6,7 +6,7 @@ try{
 //     `list`.`name`
 // FROM `heroku_e1c24c8d39f0e17`.`list`;
 
-  $stmt = $db->query("select * from list");
+  $stmt = $db->query("show tables");
   $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
   echo $stmt;
   var_dump($stmt);

@@ -66,7 +66,7 @@
         public function getMarkerList($userName)
         {
             //ユーザ名をしていし、見つかったユーザ名、緯度、経度をリストで返す
-            $statement = $this->_database->prepare("select username, lat, lng from markerList where username = ?;");
+            $statement = $this->_database->prepare("select username, lat, lng from markerlist where username = ?;");
             $statement->execute([$userName]);
             return $statement;
         }
@@ -121,7 +121,7 @@
         private function _getFollowUserList($userName)
         {
             //ユーザー名を指定し、フォローしているユーザー名をリストで返す
-            $statement = $this->_database->prepare("select followedname from followList where username = ?;");
+            $statement = $this->_database->prepare("select followedname from followlist where username = ?;");
             $statement->execute([$userName]);
             return $statement;
         }
@@ -132,7 +132,7 @@
         private function _getFollowerUserList($userName)
         {
             //ユーザー名を指定し、そのユーザーをフォローしているユーザーをリストで返す
-            $statement = $this->_database->prepare("select username from followList where followedname = ?;");
+            $statement = $this->_database->prepare("select username from followlist where followedname = ?;");
             $statement->execute([$userName]);
             return $statement;
         }
@@ -207,7 +207,7 @@
             }
 
             //ユーザー名、緯度、経度を指定してデーターベースへ書き込む
-            $statement = $this->_database->prepare("insert into markerList (username, lat, lng) values (?, ?, ?)");
+            $statement = $this->_database->prepare("insert into markerlist (username, lat, lng) values (?, ?, ?)");
             $statement->execute([$this->_userName, $_POST['lat'], $_POST['lng']]);
         }
 
@@ -221,7 +221,7 @@
             }
 
             //ユーザー名、緯度、経度を指定してデーターベースのデータを削除
-            $statement = $this->_database->prepare("delete from markerList where username = ? and lat = ? and lng = ?;");
+            $statement = $this->_database->prepare("delete from markerlist where username = ? and lat = ? and lng = ?;");
             $statement->execute([$this->_userName, $_POST["lat"], $_POST['lng']]);
         }
 
@@ -349,7 +349,7 @@
             }
 
             //ユーザー名、入力したユーザ名をしていしてデーターベースを検索
-            $statement = $this->_database->prepare("select * from followList where username = ? and followedname = ?");
+            $statement = $this->_database->prepare("select * from followlist where username = ? and followedname = ?");
             $statement->execute([$_POST['userName'], $_POST['searchName']]);
 
             if ($statement->rowCount() == 0) {//フォローしていないとき
@@ -372,7 +372,7 @@
             }
 
             //ユーザー名、入力したユーザー名をしていしてデータベースのデータを削除
-            $statement = $this->_database->prepare("delete from followList where username = ? and followedname = ?");
+            $statement = $this->_database->prepare("delete from followlist where username = ? and followedname = ?");
             $statement->execute([$_POST['userName'], $_POST['followUserName']]);
             return true;//成功したらtrueを返す
         }
@@ -392,7 +392,7 @@
 
             if ($this->_checkFollow() == true) {//フォローしていないとき
                 //ユーザー名、入力したユーザー名を指定してデータベースへ書き込む
-                $statement = $this->_database->prepare("insert into followList (username, followedname) values (?, ?)");
+                $statement = $this->_database->prepare("insert into followlist (username, followedname) values (?, ?)");
                 $statement->execute([$_POST['userName'], $_POST['searchName']]);
                 return true;//成功したらtrueを返す
             } else {
