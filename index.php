@@ -9,6 +9,12 @@ try{
   $stmt = $db->query("show tables");
   $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
   echo $stmt;
+  var_dump($stmt);
+  foreach ($stmt as $key => $value) {
+    // code...
+    echo $value;
+
+  }
 }catch(PDOException $e){
     print('DB接続エラー:'.$e->getMessage());
 }
