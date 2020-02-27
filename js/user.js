@@ -1,7 +1,7 @@
 {
     'use strict';
 
-    const userName = '<?= h($account->getuserName()); ?>';//ログインユーザーの名前
+    const userName = document.getElementById('userName').getAttribute('data-val');//ログインユーザーの名前
     const url = './_ajax.php';//非同期処理で利用するURLを指定
     const searchResult = document.getElementById('searchResult');//検索結果を表示するliタグを参照
     const removeButton = document.querySelectorAll('button[name="removeButton"]');//フォロー解除ボタンを参照
