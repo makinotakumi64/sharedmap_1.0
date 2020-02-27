@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
+        <div type="hidden" id="userName" data-val="<?= h($account->getUserName()); ?>"></div>
         <header>
             <img class="header_icon" src="./img/header_icon.png">
             <h1 class="title">SHAREDMAP</h1>
