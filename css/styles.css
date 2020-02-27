@@ -1,0 +1,171 @@
+body {
+  font-family: Verdana, sans-serif;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  margin-top: 20px;
+  height: 90px;
+  padding: 10px;
+  background-color: orange;
+  margin-bottom: 40px;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1 {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+footer {
+  height: 50px;
+  padding: 10px;
+  background-color: orange;
+  margin-bottom: 40px;
+}
+
+.header_icon {
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+}
+
+.title {
+  text-decoration: none;
+  color: white;
+  font-size: 50px;
+  display: inline;
+}
+
+.login {
+  height: 150px;
+  width: 500px;
+  background-color: lightsalmon;
+  margin: 10% auto;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+.login > h1 {
+  display: block;
+}
+
+.create {
+  height: 150px;
+  width: 500px;
+  background-color: mediumseagreen;
+  margin: 10% auto;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+.guest {
+  height: 150px;
+  width: 500px;
+  background-color: skyblue;
+  margin: 10% auto;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+.button {
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  width: 120px;
+  font-size: 15px;
+}
+
+.button > a{
+  text-decoration: none;
+  display: block;
+  width: auto;
+  color: black;
+}
+
+.user {
+  height: 210px;
+  width: 400px;
+  background-color: orange;
+  margin: 30px auto;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+.user > h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.user h2 {
+  font-size: 30px;
+  margin: 5px 0;
+}
+
+.main {
+  margin: 30px auto;
+  width: 80%;
+  height: 70%;
+}
+
+#map {
+  height: 100px;
+  width: 100px;
+  padding: 40%;
+  margin: 5px auto;
+  border-radius: 25px;
+  border: 5px solid silver;
+}
+
+.list > h1 {
+  display: block;
+  text-align: center;
+}
+
+.menu {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-top: auto;
+  height: auto;
+  width: auto;
+}
+
+.menu > h1 {
+  display: block;
+}
+
+.userList > h2 {
+  display: inline-block;
+  margin: 0;
+}
+
+.userList > h1 {
+  margin: 0;
+  width: 145px;
+}
+
+.userList {
+  height: 100px;
+  width: 430px;
+  background-color: silver;
+  margin: 5px auto;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 15px;
+  opacity: 0.7;
+}
