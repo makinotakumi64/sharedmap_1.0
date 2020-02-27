@@ -1,26 +1,3 @@
-<?php
-try{
-    $db=new PDO('mysql:dbname=heroku_e1c24c8d39f0e17;host=us-cdbr-iron-east-04.cleardb.net;charset=utf8','bd5d556ed6275e','51cead58');
-    $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);//エラーが出た際にExceptionを出す設定
-//     SELECT `list`.`id`,
-//     `list`.`name`
-// FROM `heroku_e1c24c8d39f0e17`.`list`;
-
-  $stmt = $db->query("show tables");
-  $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  echo $stmt;
-  var_dump($stmt);
-  foreach ($stmt as $key => $value) {
-    // code...
-    echo $value;
-
-  }
-}catch(PDOException $e){
-    print('DB接続エラー:'.$e->getMessage());
-}
-
- ?>
-
 <!DOCTYPE html>
 <html lang="ja">
     <head>
