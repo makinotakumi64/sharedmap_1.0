@@ -35,7 +35,9 @@
                 <h1>ユーザー: <?= h($account->getuserName()); ?></h1>
                 <li>
                     <h2>マーカー: <?= h($account->getNumberOfMarker()); ?></h2>
-                    <h2>フォロー: <span id="numberOfFollow"><?= h($account->getNumberOfFollowUser()); ?></span></h2>
+                    <h2>
+                        フォロー:<span id="numberOfFollow"><?= h($account->getNumberOfFollowUser()); ?></span>
+                    </h2>
                     <h2>フォロワー: <?= h($account->getNumberOfFollowerUser()); ?></h2>
                 </li>
             </div>
@@ -54,10 +56,10 @@
                 <h2></h2>
             </li>
 
-            <div class="list" id="followList">
+            <div class="list">
                 <h1>ーフォローリストー</h1>
                 <?php foreach ($followInfoList as $key => $value): ?>
-                    <li class="userList" id="info">
+                    <li class="userList">
                         <h1>ユーザー: </h1>
                         <h1><?= h($value['userName']); ?></h1>
                         <button class="button" name="removeButton">フォロー解除</button>
@@ -69,15 +71,17 @@
             <div id="addList" ></div>
             </div>
 
-            <div class="list" id="list">
+            <div class="list">
                 <h1>ーフォロワーリストー</h1>
                 <?php foreach ($followerInfoList as $key => $value): ?>
-                    <li class="userList" id="info">
+                    <li class="userList" id="userList">
                         <h1>ユーザー: </h1>
                         <h1><?= h($value['userName']); ?></h1>
                         <h2>マーカー: <?= h($value['marker']); ?></h2>
                         <h2>フォロー: <?= h($value['followUser']); ?></h2>
-                        <h2>フォロワー: <?= h($value['followerUser']); ?></h2>
+                        <h2>
+                            フォロワー:<span id = "numberOfFollower"><?= h($value['followerUser']); ?></span>
+                        </h2>
                     </li>
                 <?php endforeach; ?>
             </div>

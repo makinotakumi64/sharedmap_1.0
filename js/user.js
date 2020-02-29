@@ -6,6 +6,8 @@
     const searchResult = document.getElementById('searchResult');//検索結果を表示するliタグを参照
     const removeButton = document.querySelectorAll('button[name="removeButton"]');//フォロー解除ボタンを参照
     const numberOfFollow = document.getElementById('numberOfFollow');
+    const followerList = document.querySelectorAll('li[id="userList"]');
+    const followerListNumberOfFollower = document.querySelectorAll('span[id="numberOfFollower"]');
     var numberOfFollower;
     searchResult.style.display = 'none';//検索結果を非表示にする
 
@@ -88,7 +90,7 @@
     //初めから存在するフォロー解除ボタンにフォロー解除処理動作を紐づけ
     for (var i = 0; i < removeButton.length; i++) {
         removeButton[i].addEventListener('click', {
-            followUserName: removeButton[i].parentNode.children[1].textContent,//フォロー解除ボタンを押したユーザ名を渡す
+            followUserName: removeButton[i].parentNode.children[1].textContent,//フォロー解除ボタンを押されたユーザ名を渡す
             removebtn: removeButton[i],//押したフォロー解除ボタンを渡す
             handleEvent: removeButtonClick,//handleEventを紐づけ
         }, false);
@@ -103,14 +105,35 @@
         copy.children[2].textContent = 'フォロー解除';//ボタンの内容を変更
 
         copy.children[2].addEventListener('click', {//フォロー解除ボタンにフォロー解除処理動作を紐づけ
-            followUserName: copy.children[2].parentNode.children[1].textContent,//フォロー解除ボタンを押したユーザ名を渡す
+            followUserName: copy.children[2].parentNode.children[1].textContent,//フォロー解除ボタンを押されたユーザ名を渡す
             removebtn: copy.children[2],//押したフォロー解除ボタンを渡す
             handleEvent: removeButtonClick,//handleEventを紐づけ
         }, false);
 
+        addFollower(copy.children[1].textContent);//フォローした人がフォロワーかどうか判定
         addList.appendChild(copy);//divタグへ追加
         numberOfFollow.textContent = parseInt(numberOfFollow.textContent) + 1;
         searchResult.style.display = 'none';//検索結果を非表示
+    }
+
+
+    //フォローした人がフォロワーリストにいたときにフォロワーを増やす処理
+    function addFollower(searchName) {
+        for (var i = 0; i < followerList.length; i++) {
+            if (followerList[i].children[1].textContent === searchName) {//フォローした人がフォロワーだったとき
+                followerListNumberOfFollower[i].textContent = parseInt(followerListNumberOfFollower[i].textContent) + 1;//フォロー数を1増やす
+            }
+        }
+    }
+
+
+    //フォロー解除した人がフォロワーリストにいたときにフォロワーを減らす処理
+    function followerListRemoveFollower(followUserName) {
+        for (var i = 0; i < followerList.length; i++) {
+            if (followerList[i].children[1].textContent === followUserName) {//フォローした人がフォロワーだったとき
+                followerListNumberOfFollower[i].textContent = parseInt(followerListNumberOfFollower[i].textContent) - 1;//フォロー数を1増やす
+            }
+        }
     }
 
 
@@ -123,6 +146,7 @@
         removeFollow(this.followUserName);//フォロー解除する処理をサーバーへ指示
         this.removebtn.parentNode.remove();//表示を消す
         numberOfFollow.textContent = parseInt(numberOfFollow.textContent) - 1;
+        followerListRemoveFollower(this.followUserName);//フォロー解除した人がフォロワーかどうか判定
     }
 
 
