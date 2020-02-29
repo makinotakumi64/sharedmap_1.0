@@ -110,7 +110,7 @@
             handleEvent: removeButtonClick,//handleEventを紐づけ
         }, false);
 
-        addFollower(copy.children[1].textContent);//フォローした人がフォロワーかどうか判定
+        followerListAddFollower(copy.children[1].textContent);//フォローした人がフォロワーかどうか判定
         addList.appendChild(copy);//divタグへ追加
         numberOfFollow.textContent = parseInt(numberOfFollow.textContent) + 1;
         searchResult.style.display = 'none';//検索結果を非表示
@@ -118,7 +118,7 @@
 
 
     //フォローした人がフォロワーリストにいたときにフォロワーを増やす処理
-    function addFollower(searchName) {
+    function followerListAddFollower(searchName) {
         for (var i = 0; i < followerList.length; i++) {
             if (followerList[i].children[1].textContent === searchName) {//フォローした人がフォロワーだったとき
                 followerListNumberOfFollower[i].textContent = parseInt(followerListNumberOfFollower[i].textContent) + 1;//フォロー数を1増やす
